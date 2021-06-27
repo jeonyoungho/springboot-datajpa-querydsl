@@ -1,6 +1,8 @@
 package com.example.springbootdatajpaquerydsl.product;
 
 import com.example.springbootdatajpaquerydsl.category.Category;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,9 @@ public class Product {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+//    @JsonBackReference
+    @JsonIgnoreProperties({"products"})
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="category_id")
     private Category category;
 
