@@ -23,29 +23,29 @@ public class ProductServiceTest {
 
     @BeforeEach
     void setup() {
-        List<Product> products = new ArrayList<>();
-
-        for(int i=0;i<10;i++) {
-            Product product = Product.builder()
-                    .name("product"+i)
-                    .description("Best Prodcut!")
-                    .price(1000)
-                    .manufacturer("Apple")
-                    .unitInStock(10)
-                    .build();
-            products.add(product);
-        }
-
-        productRepository.saveAll(products);
+//        List<Product> products = new ArrayList<>();
+//
+//        for(int i=0;i<10;i++) {
+//            Product product = Product.builder()
+//                    .name("product"+i)
+//                    .description("Best Prodcut!")
+//                    .price(1000)
+//                    .manufacturer("Apple")
+//                    .unitInStock(10)
+//                    .build();
+//            products.add(product);
+//        }
+//
+//        productRepository.saveAll(products);
     }
 
     @AfterEach
     void cleanAll() {
-        productRepository.deleteAll();
+//        productRepository.deleteAll();
     }
 
     @Test
-    public void 전체_product_조회시_10을_리턴() {
+    public void 전체_product_조회시_10_리턴() {
         //given
         List<Product> products = productService.getProducts();
 
