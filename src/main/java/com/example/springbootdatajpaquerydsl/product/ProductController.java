@@ -20,6 +20,10 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getProducts() {
         List<Product> products = productService.getProducts();
+        for(Product product:products) {
+            System.out.println(product.getCategory().getName());
+        }
+
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
