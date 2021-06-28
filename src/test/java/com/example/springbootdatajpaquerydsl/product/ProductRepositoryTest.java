@@ -4,6 +4,7 @@ import com.example.springbootdatajpaquerydsl.category.Category;
 import com.example.springbootdatajpaquerydsl.category.CategoryRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,22 +24,15 @@ public class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
-
     @BeforeEach
     void setup() {
         List<Product> products = new ArrayList<>();
 
         for(int i=0;i<10;i++) {
-            Category category = Category.builder()
-                    .name("category" + i)
-                    .build();
-
             Product product = Product.builder()
                     .name("product"+i)
-                    .category(category)
                     .description("Best Prodcut!")
+                    .category(null)
                     .price(1000)
                     .manufacturer("Apple")
                     .unitInStock(10)
@@ -55,13 +49,12 @@ public class ProductRepositoryTest {
     }
 
     @Test
-    public void 전체_product_조회시_10을_리턴() {
+    @DisplayName("전체_product_조회시_10_리턴")
+    public void findAllTest() {
         //given
         List<Product> products = productRepository.findAll();
-        List<Category> categories = categoryRepository.findAll();
 
         //then
         assertThat(products.size(), is(10));
-        assertThat(categories.size(), is(10));
     }
 }

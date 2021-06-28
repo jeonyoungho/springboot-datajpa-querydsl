@@ -23,7 +23,7 @@ public class Product {
 
 //    @JsonBackReference
     @JsonIgnoreProperties({"products"})
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
 

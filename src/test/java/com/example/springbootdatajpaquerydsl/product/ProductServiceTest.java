@@ -2,6 +2,7 @@ package com.example.springbootdatajpaquerydsl.product;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,29 +24,31 @@ public class ProductServiceTest {
 
     @BeforeEach
     void setup() {
-//        List<Product> products = new ArrayList<>();
-//
-//        for(int i=0;i<10;i++) {
-//            Product product = Product.builder()
-//                    .name("product"+i)
-//                    .description("Best Prodcut!")
-//                    .price(1000)
-//                    .manufacturer("Apple")
-//                    .unitInStock(10)
-//                    .build();
-//            products.add(product);
-//        }
-//
-//        productRepository.saveAll(products);
+        List<Product> products = new ArrayList<>();
+
+        for(int i=0;i<10;i++) {
+            Product product = Product.builder()
+                    .name("product"+i)
+                    .category(null)
+                    .description("Best Prodcut!")
+                    .price(1000)
+                    .manufacturer("Apple")
+                    .unitInStock(10)
+                    .build();
+            products.add(product);
+        }
+
+        productRepository.saveAll(products);
     }
 
     @AfterEach
     void cleanAll() {
-//        productRepository.deleteAll();
+        productRepository.deleteAll();
     }
 
     @Test
-    public void 전체_product_조회시_10_리턴() {
+    @DisplayName("전체_product_조회시_10_리턴")
+    public void getProductsTest() {
         //given
         List<Product> products = productService.getProducts();
 

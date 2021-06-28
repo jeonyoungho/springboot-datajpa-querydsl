@@ -4,6 +4,7 @@ import com.example.springbootdatajpaquerydsl.product.Product;
 import com.example.springbootdatajpaquerydsl.product.ProductRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,34 +47,20 @@ public class CategoryRepositoryTest {
         categoryRepository.save(category);
     }
 
-//    @AfterEach
-//    void cleanAll() {
-//        productRepository.deleteAll();
-//    }
+    @AfterEach
+    void cleanAll() {
+        productRepository.deleteAll();
+    }
 
     @Test
-    public void 전체_product_조회시_10을_리턴() {
+    @DisplayName("전체_product_조회시_10_리턴")
+    public void findAllTest() {
         //given
         List<Product> products = productRepository.findAll();
         Category category = categoryRepository.findById(1L).get();
 
         //then
         assertThat(category.getProducts().size(), is(10));
-        assertThat(products.size(), is(10));
-    }
-
-    @Test
-    public void 전체_product_조회시_10을_리턴2() {
-        //given
-        List<Product> products = productRepository.findAll();
-        List<Category> categories = categoryRepository.findAll();
-
-        for(Category category:categories) {
-            System.out.println(category.getName());
-        }
-
-        //then
-        assertThat(categories.size(), is(1));
         assertThat(products.size(), is(10));
     }
 }
