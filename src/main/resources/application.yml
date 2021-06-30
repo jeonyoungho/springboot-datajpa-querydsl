@@ -9,6 +9,10 @@ spring:
       driver-class-name: org.h2.Driver
       username: sa
       password: sapw
+  jpa:
+    hibernate:
+      ddl-auto: create
+
 management:
   endpoints:
     web:

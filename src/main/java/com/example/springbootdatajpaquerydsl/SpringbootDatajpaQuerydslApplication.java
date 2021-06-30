@@ -43,7 +43,6 @@ public class SpringbootDatajpaQuerydslApplication implements CommandLineRunner {
 //                    .build());
 //        }
 //
-//
 //        productRepository.saveAll(products);
     }
 }

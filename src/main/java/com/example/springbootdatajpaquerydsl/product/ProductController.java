@@ -14,9 +14,9 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @PutMapping("/products")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-        Product _product = productService.updateProduct(product);
+    @PostMapping("/products")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+        Product _product = productService.addProduct(product);
         return new ResponseEntity<>(_product, HttpStatus.OK);
     }
 
@@ -32,20 +32,16 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    @PostMapping("/products")
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        Product _product = productService.addProduct(product);
+    @PutMapping("/products")
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
+        Product _product = productService.updateProduct(product);
         return new ResponseEntity<>(_product, HttpStatus.OK);
     }
 
-//    @PostMapping("/products")
-//    public ResponseEntity<Product> addProduct() {
-//        return new ResponseEntity<>(null, HttpStatus.OK);
-//    }
-
-    @PostMapping("/products/example")
-    public ResponseEntity<String> example(@RequestBody String text) {
-        return new ResponseEntity<>(text, HttpStatus.OK);
+    @PutMapping("/products2")
+    public ResponseEntity<Void> updateProduct2() {
+//        Product _product = productService.updateProduct(product);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @DeleteMapping("/products/{id}")

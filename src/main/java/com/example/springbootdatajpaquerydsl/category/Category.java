@@ -25,7 +25,7 @@ public class Category {
 
 //    @JsonManagedReference
     @JsonIgnoreProperties({"category"})
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Product> products = new LinkedHashSet<>();
 
     @Builder

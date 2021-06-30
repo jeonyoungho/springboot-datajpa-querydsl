@@ -27,6 +27,10 @@ public class Product {
     @JoinColumn(name="category_id")
     private Category category;
 
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     private String description;
 
     private int price;

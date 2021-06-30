@@ -2,8 +2,10 @@ package com.example.springbootdatajpaquerydsl.product;
 
 import com.example.springbootdatajpaquerydsl.category.CategoryRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -35,6 +37,8 @@ public class ProductControllerTest {
     @MockBean
     private CategoryRepository categoryRepository;
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     @Test
     @DisplayName("단일 Product 삽입 테스트")
     void addProductTest() throws Exception {
@@ -59,16 +63,6 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.price", is(1000)))
                 .andExpect(jsonPath("$.manufacturer", is("Apple")))
                 .andExpect(jsonPath("$.unitInStock", is(10)));
-    }
-
-    @Test
-    @DisplayName("Post 메소드 example")
-    void example() throws Exception {
-        String text = "test message";
-        mvc.perform(post("/api/v1/products/example")
-        .content(text))
-                .andExpect(status().isOk())
-                .andExpect(content().string(text));
     }
 
     @Test
@@ -111,4 +105,52 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.manufacturer", is("Apple")))
                 .andExpect(jsonPath("$.unitInStock", is(10)));
         }
+
+    @Test
+    @DisplayName("특정 Product 수정 테스트")
+    void updateProductTest() throws Exception {
+        Product product = Product.builder()
+                .name("macbook_pro")
+                .description("Best Product")
+                .price(1000)
+                .manufacturer("Apple")
+                .unitInStock(10)
+                .build();
+
+        given(productService.updateProduct(any())).willReturn(product);
+
+        mvc.perform(put("/api/v1/products")
+                .content(objectMapper.writeValueAsString(product))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is("macbook_pro")))
+                .andExpect(jsonPath("$.description", is("Best Product")))
+                .andExpect(jsonPath("$.price", is(1000)))
+                .andExpect(jsonPath("$.manufacturer", is("Apple")))
+                .andExpect(jsonPath("$.unitInStock", is(10)));
+    }
+
+    @Test
+    @DisplayName("특정 Product 삭제 테스트")
+    void deleteProductTest() throws Exception {
+        Product product = Product.builder()
+                .name("macbook_pro")
+                .description("Best Product")
+                .price(1000)
+                .manufacturer("Apple")
+                .unitInStock(10)
+                .build();
+
+        given(productService.updateProduct(any())).willReturn(product);
+
+        mvc.perform(put("/api/v1/products")
+                .content(objectMapper.writeValueAsString(product))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is("macbook_pro")))
+                .andExpect(jsonPath("$.description", is("Best Product")))
+                .andExpect(jsonPath("$.price", is(1000)))
+                .andExpect(jsonPath("$.manufacturer", is("Apple")))
+                .andExpect(jsonPath("$.unitInStock", is(10)));
+    }
 }
