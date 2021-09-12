@@ -1,14 +1,12 @@
-package com.example.springbootdatajpaquerydsl.product;
+package com.example.springbootdatajpaquerydsl.domain.product;
 
-import com.example.springbootdatajpaquerydsl.category.Category;
-import com.example.springbootdatajpaquerydsl.category.CategoryRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 @ExtendWith(SpringExtension.class)
-@DataJpaTest
+@SpringBootTest
 public class ProductRepositoryTest {
 
     @Autowired
@@ -56,5 +54,27 @@ public class ProductRepositoryTest {
 
         //then
         assertThat(products.size(), is(10));
+    }
+
+    @Test
+    public void querydsl_Custom설정_기능_확인() {
+        final int price = 100;
+        for(int i=0;i<10;i++) {
+            productRepository.save(Product.builder()
+                    .name("TestProduct"+i)
+                    .description("Best Prodcut!")
+                    .category(null)
+                    .price(price)
+                    .manufacturer("Apple")
+                    .unitInStock(10)
+                    .build());
+        }
+
+        //when
+        List<Product> result = productRepository.findByPrice(price);
+
+        //then
+        assertThat(result.size(), is(price));
+        assertThat(result.get(0).getName(), is("TestProduct0"));
     }
 }

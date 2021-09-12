@@ -1,7 +1,6 @@
-package com.example.springbootdatajpaquerydsl.product;
+package com.example.springbootdatajpaquerydsl.domain.product;
 
-import com.example.springbootdatajpaquerydsl.category.Category;
-import com.example.springbootdatajpaquerydsl.category.CategoryRepository;
+import com.example.springbootdatajpaquerydsl.service.ProductService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;

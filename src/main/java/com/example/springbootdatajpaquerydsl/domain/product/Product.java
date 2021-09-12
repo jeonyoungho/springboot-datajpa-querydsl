@@ -1,7 +1,6 @@
-package com.example.springbootdatajpaquerydsl.product;
+package com.example.springbootdatajpaquerydsl.domain.product;
 
-import com.example.springbootdatajpaquerydsl.category.Category;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.springbootdatajpaquerydsl.domain.category.Category;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +15,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id", nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false)
     private Long id;
 
     private String name;

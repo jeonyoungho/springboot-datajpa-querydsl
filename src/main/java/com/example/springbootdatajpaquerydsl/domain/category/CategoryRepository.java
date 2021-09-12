@@ -1,4 +1,4 @@
-package com.example.springbootdatajpaquerydsl.category;
+package com.example.springbootdatajpaquerydsl.domain.category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

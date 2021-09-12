@@ -1,12 +1,12 @@
-package com.example.springbootdatajpaquerydsl.product;
+package com.example.springbootdatajpaquerydsl.service;
 
-import com.example.springbootdatajpaquerydsl.category.Category;
-import com.example.springbootdatajpaquerydsl.category.CategoryRepository;
+import com.example.springbootdatajpaquerydsl.domain.category.CategoryRepository;
+import com.example.springbootdatajpaquerydsl.domain.product.Product;
+import com.example.springbootdatajpaquerydsl.domain.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

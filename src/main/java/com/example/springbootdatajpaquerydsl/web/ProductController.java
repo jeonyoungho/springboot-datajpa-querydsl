@@ -1,5 +1,7 @@
-package com.example.springbootdatajpaquerydsl.product;
+package com.example.springbootdatajpaquerydsl.web;
 
+import com.example.springbootdatajpaquerydsl.domain.product.Product;
+import com.example.springbootdatajpaquerydsl.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

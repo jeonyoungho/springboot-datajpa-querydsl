@@ -1,11 +1,11 @@
-package com.example.springbootdatajpaquerydsl.product;
+package com.example.springbootdatajpaquerydsl.domain.product;
 
-import com.example.springbootdatajpaquerydsl.category.CategoryRepository;
+import com.example.springbootdatajpaquerydsl.domain.category.CategoryRepository;
+import com.example.springbootdatajpaquerydsl.service.ProductService;
+import com.example.springbootdatajpaquerydsl.web.ProductController;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

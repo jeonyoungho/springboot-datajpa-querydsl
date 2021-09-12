@@ -1,12 +1,12 @@
-package com.example.springbootdatajpaquerydsl.category;
+package com.example.springbootdatajpaquerydsl.web;
 
-import com.example.springbootdatajpaquerydsl.product.Product;
+import com.example.springbootdatajpaquerydsl.domain.category.Category;
+import com.example.springbootdatajpaquerydsl.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController

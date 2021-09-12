@@ -1,8 +1,7 @@
-package com.example.springbootdatajpaquerydsl.category;
+package com.example.springbootdatajpaquerydsl.domain.category;
 
-import com.example.springbootdatajpaquerydsl.product.Product;
+import com.example.springbootdatajpaquerydsl.domain.product.Product;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id", nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false)
     private Long id;
 
     private String name;

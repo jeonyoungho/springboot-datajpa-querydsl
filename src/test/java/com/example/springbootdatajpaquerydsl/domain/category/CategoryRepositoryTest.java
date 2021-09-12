@@ -1,7 +1,7 @@
-package com.example.springbootdatajpaquerydsl.category;
+package com.example.springbootdatajpaquerydsl.domain.category;
 
-import com.example.springbootdatajpaquerydsl.product.Product;
-import com.example.springbootdatajpaquerydsl.product.ProductRepository;
+import com.example.springbootdatajpaquerydsl.domain.product.Product;
+import com.example.springbootdatajpaquerydsl.domain.product.ProductRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

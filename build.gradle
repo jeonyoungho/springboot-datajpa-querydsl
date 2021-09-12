@@ -1,3 +1,9 @@
+buildscript {
+    ext {
+        querydslVersion = "4.4.0"
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.5.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -6,7 +12,6 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
 
 configurations {
     compileOnly {
@@ -27,8 +32,28 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-devtools'
     implementation 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // QueryDSL
+    implementation "com.querydsl:querydsl-jpa:${querydslVersion}"
+    annotationProcessor(
+            "javax.persistence:javax.persistence-api",
+            "javax.annotation:javax.annotation-api",
+            "com.querydsl:querydsl-apt:${querydslVersion}:jpa")
 }
 
 test {
     useJUnitPlatform()
+}
+
+def generated='src/main/generated'
+sourceSets {
+    main.java.srcDirs += [ generated ]
+}
+
+tasks.withType(JavaCompile) {
+    options.annotationProcessorGeneratedSourcesDirectory = file(generated)
+}
+
+clean.doLast {
+    file(generated).deleteOnExit();
 }
